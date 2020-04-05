@@ -9,61 +9,60 @@
 import UIKit
 
 class CombineVC:UIViewController {
-    
+    var usuarios: [Usuario] = []
     override func viewDidLoad() {
         view.backgroundColor = UIColor.systemGroupedBackground
-        
-        for _ in 1...3 {
-              self.adicionarCards()
-        }
-      
-     
+        self.buscaUsuarios()
+    }
+    func buscaUsuarios () {
+        self.usuarios =  UsuarioService.shared.buscaUsuarios()
+        self.adicionarCards()
     }
 }
 extension CombineVC{
     func adicionarCards() {
-           let redView = UIView()
-             redView.backgroundColor = .random()
-        redView.frame = CGRect(x: 0, y: 0, width: view.bounds.width-32, height: view.bounds.height * 0.7)
-             redView.center = view.center
-             
-             
-             let gesture = UIPanGestureRecognizer()
-             gesture.addTarget(self, action: #selector(handleCard))
-             view.addSubview(redView)
-             redView.addGestureRecognizer(gesture)
+        for usuario in self.usuarios {
+            let card = CombinaCardView()
+            card.frame = CGRect(x: 0, y: 0, width: view.bounds.width-32, height: view.bounds.height * 0.7)
+            card.center = view.center
+            card.usuario = usuario
+            card.tag = usuario.id
+            
+            let gesture = UIPanGestureRecognizer()
+            gesture.addTarget(self, action: #selector(handleCard))
+            view.addSubview(card)
+            card.addGestureRecognizer(gesture)
+            view.insertSubview(card, at: 0)
+        }
+        
     }
 }
 extension CombineVC{
     @objc func handleCard(gesture: UIPanGestureRecognizer){
-        if let card = gesture.view{
+        if let card = gesture.view as? CombinaCardView{
             let point = gesture.translation(in: view)
             card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
             
             let rotateAngle = point.x / view.bounds.width * 0.4
+            if point.x > 0 {
+                card.likeImageView.alpha = rotateAngle * 5
+                card.dislikeImageView.alpha = 0
+            }else {
+                card.likeImageView.alpha = 0
+                card.dislikeImageView.alpha = rotateAngle * -5
+            }
             card.transform = CGAffineTransform(rotationAngle: rotateAngle)
             if gesture.state == .ended {
                 UIView.animate(withDuration: 0.2){
                     card.transform = .identity
-                     card.center = self.view.center
+                    card.center = self.view.center
+                    card.likeImageView.alpha = 0
+                    card.dislikeImageView.alpha = 0
                 }
-               
+                
             }
         }
         
     }
-   
-    }
-extension CGFloat {
-       static func random() -> CGFloat {
-           return CGFloat(arc4random()) / CGFloat(UInt32.max)
-       }
-   }
-   extension UIColor {
-       static func random() -> UIColor {
-           return UIColor(red:   .random(),
-                          green: .random(),
-                          blue:  .random(),
-                          alpha: 1.0)
-       }
+    
 }
