@@ -20,6 +20,8 @@
 		6361A074243A52C10019CA9B /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361A073243A52C10019CA9B /* Usuario.swift */; };
 		6361A077243A53A40019CA9B /* UsuarioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361A076243A53A40019CA9B /* UsuarioService.swift */; };
 		6361A079243A580D0019CA9B /* UiImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361A078243A580D0019CA9B /* UiImageView.swift */; };
+		6361A07B243A5E460019CA9B /* UiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361A07A243A5E460019CA9B /* UiButton.swift */; };
+		6361A07D243BDAD40019CA9B /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6361A07C243BDAD40019CA9B /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		6361A073243A52C10019CA9B /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		6361A076243A53A40019CA9B /* UsuarioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioService.swift; sourceTree = "<group>"; };
 		6361A078243A580D0019CA9B /* UiImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiImageView.swift; sourceTree = "<group>"; };
+		6361A07A243A5E460019CA9B /* UiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiButton.swift; sourceTree = "<group>"; };
+		6361A07C243BDAD40019CA9B /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				6361A069243A42EC0019CA9B /* CombineCardView.swift */,
+				6361A07C243BDAD40019CA9B /* Loading.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 				6361A06E243A48C60019CA9B /* UiView.swift */,
 				6361A070243A4E3E0019CA9B /* UiLabel.swift */,
 				6361A078243A580D0019CA9B /* UiImageView.swift */,
+				6361A07A243A5E460019CA9B /* UiButton.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -205,9 +211,11 @@
 				6361A0562438E6F70019CA9B /* ViewController.swift in Sources */,
 				6361A0522438E6F70019CA9B /* AppDelegate.swift in Sources */,
 				6361A071243A4E3E0019CA9B /* UiLabel.swift in Sources */,
+				6361A07B243A5E460019CA9B /* UiButton.swift in Sources */,
 				6361A06F243A48C60019CA9B /* UiView.swift in Sources */,
 				6361A06A243A42EC0019CA9B /* CombineCardView.swift in Sources */,
 				6361A067243A3B310019CA9B /* CombineViewController.swift in Sources */,
+				6361A07D243BDAD40019CA9B /* Loading.swift in Sources */,
 				6361A0542438E6F70019CA9B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
