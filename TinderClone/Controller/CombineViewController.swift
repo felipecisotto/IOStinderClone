@@ -90,9 +90,12 @@ extension CombineVC{
             return usuario.id != card.tag
         }
     }
-    func verificarLike(usuario:Usuario){
+    func verificarMatch(usuario:Usuario){
         if usuario.match{
-            print("teste")
+           let matchVC = MatchVC()
+            matchVC.usuario = usuario
+            matchVC.modalPresentationStyle = .fullScreen 
+            self.present(matchVC,animated: true,completion: nil)
         }
     }
 }
@@ -168,7 +171,7 @@ extension CombineVC{
                         UIView.animate(withDuration: 0.2, animations: { card.center = center
                             card.transform = CGAffineTransform(rotationAngle: rotationAngle)}, completion: {(_) in
                                 if like {
-                                    self.verificarLike(usuario: usuario)
+                                    self.verificarMatch(usuario: usuario)
                                 }
                                 self.removerCard(card)
                         })
