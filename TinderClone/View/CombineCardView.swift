@@ -29,6 +29,9 @@ class CombinaCardView: UIView {
     
     let dislikeImageView: UIImageView = .iconCard(named:"card-dislike")
     let likeImageView: UIImageView = .iconCard(named:"card-like")
+    
+    var callback: ((Usuario) -> Void)?
+    
     override init(frame: CGRect) {
         
         super.init(frame:frame)
@@ -58,7 +61,17 @@ class CombinaCardView: UIView {
         
         fraseStackView.preencher(top: nil, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor,padding: .init(top: 0, left: 16, bottom: 15, right: 16))
         
+        let tap = UITapGestureRecognizer(target: self, action:#selector(visualizarUsuario))
         
+        fraseStackView.isUserInteractionEnabled = true
+        fraseStackView.addGestureRecognizer(tap)
+        
+        
+    }
+    @objc func visualizarUsuario(){
+        if let usuario = self.usuario {
+            self.callback?(usuario)
+        }
     }
     required init?(coder: NSCoder) {
         fatalError()

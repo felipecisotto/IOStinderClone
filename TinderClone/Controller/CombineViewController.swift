@@ -75,7 +75,9 @@ extension CombineVC{
             card.center = view.center
             card.usuario = usuario
             card.tag = usuario.id
-            
+            card.callback = {(data) in
+                self.verificarDetalhe(usuario:data)
+            }
             let gesture = UIPanGestureRecognizer()
             gesture.addTarget(self, action: #selector(handleCard))
             view.addSubview(card)
@@ -97,6 +99,12 @@ extension CombineVC{
             matchVC.modalPresentationStyle = .fullScreen 
             self.present(matchVC,animated: true,completion: nil)
         }
+    }
+    func verificarDetalhe(usuario:Usuario){
+        let detalheVC = DetalheVC()
+        detalheVC.modalPresentationStyle = .fullScreen
+        self.present(detalheVC,animated: true,completion: nil)
+        detalheVC.usuario = usuario
     }
 }
 extension CombineVC{
